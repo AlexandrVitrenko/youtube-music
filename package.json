@@ -1,0 +1,24 @@
+{
+  "name": "youtube-music",
+  "version": "1.0.0",
+  "description": "download music from youtube",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "extractor28",
+  "license": "ISC",
+  "dependencies": {
+    "@deepvision/eslint-config": "^6.6.5",
+    "axios": "^0.19.2",
+    "babel-eslint": "^10.1.0",
+    "cheerio": "^1.0.0-rc.3",
+    "eslint": "^6.8.0",
+    "fluent-ffmpeg": "^2.1.2",
+    "fs-extra": "^9.0.0",
+    "shortid": "^2.2.15",
+    "youtube-playlist": "^1.0.2",
+    "yt-search": "^1.1.2",
+    "ytdl-core": "^2.0.1"
+  }
+}

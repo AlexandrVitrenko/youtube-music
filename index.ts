@@ -1,7 +1,7 @@
-const ytdl = require('ytdl-core');
-const yts = require('yt-search');
-const getOne = require('./lib/get-one');
-const getPlaylist = require('./lib/get-playlist');
+import ytdl from 'ytdl-core'
+import yts from 'yt-search';
+import { getOne } from './lib/get-one';
+import { getPlaylist } from './lib/get-playlist';
 
 let query = ''; // youtube link or search query
 const playlist = false;

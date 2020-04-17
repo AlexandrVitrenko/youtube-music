@@ -1,9 +1,10 @@
-const FFmpeg = require('fluent-ffmpeg');
+import FFmpeg from 'fluent-ffmpeg';
+import { Readable } from 'stream';
 
-module.exports = async function download(stream, path, title) {
+export const download = async (stream: Readable, path: string, title: string) => {
     return new Promise((resolve, reject) => {
-        new FFmpeg({ source: stream })
-            .on('error', (err) => {
+        new (FFmpeg as any)({ source: stream })
+            .on('error', (err: string) => {
                 reject(err);
             })
             .on('end', () => {

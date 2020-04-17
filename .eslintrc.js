@@ -1,7 +1,10 @@
 module.exports = {
     root: true,
-    parser: 'babel-eslint',
     extends: [
         '@deepvision',
+        '@deepvision/eslint-config/plugins/typescript',
     ],
+    parserOptions: {
+        project: './tsconfig.json',
+    },
 };

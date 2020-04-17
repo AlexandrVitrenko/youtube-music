@@ -1,9 +1,11 @@
 /* eslint-disable no-bitwise */
-const fs = require('fs-extra');
-const ytdl = require('ytdl-core');
-const download = require('./download');
+import fs from 'fs-extra';
+import ytdl from 'ytdl-core'
+import { download } from './download';
 
-module.exports = async function getOne(query) {
+import { Readable } from 'stream';
+
+export const getOne = async (query: string) => {
     let info = null;
     try {
         info = await ytdl.getBasicInfo(query);
@@ -15,7 +17,7 @@ module.exports = async function getOne(query) {
 
     const { title } = info;
 
-    const stream = ytdl(query, { filter: 'audioonly',
+    const stream: Readable = ytdl(query, { filter: 'audioonly',
         highWaterMark: 1 << 25 });
 
     const path = 'music';
@@ -26,3 +28,4 @@ module.exports = async function getOne(query) {
         console.log(error);
     }
 };
+

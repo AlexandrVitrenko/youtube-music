@@ -1,14 +1,14 @@
 /* eslint-disable no-bitwise */
-const fs = require('fs-extra');
-const ytdl = require('ytdl-core');
-const axios = require('axios');
-const shortid = require('shortid');
-const cheerio = require('cheerio');
-const download = require('./download');
-const getOne = require('./get-one');
-const ytlist = require('youtube-playlist');
+import fs from 'fs-extra';
+import ytdl from 'ytdl-core';
+import axios from 'axios';
+import shortid from 'shortid';
+import cheerio from 'cheerio';
+import { download } from './download';
+import { getOne } from './get-one';
+import ytlist from 'youtube-playlist';
 
-module.exports = async function getPlaylist(query) {
+export const getPlaylist = async (query: string) => {
     let list = null;
     try {
         list = await ytlist(query, ['name', 'url']);
@@ -29,7 +29,7 @@ module.exports = async function getPlaylist(query) {
         try {
             const page = await axios.get(query);
             const $ = cheerio.load(page.data);
-            const thumb = $('a').filter((i, el) => {
+            const thumb = $('a').filter((i, el: any) => {
                 return $(el).attr('href').startsWith('/playlist');
             }).get();
             title = thumb[0].children[0].data;

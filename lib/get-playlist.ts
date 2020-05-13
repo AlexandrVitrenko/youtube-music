@@ -25,17 +25,15 @@ export const getPlaylist = async (query: string) => {
     }
 
     let title = null;
-    if (!title) {
-        try {
-            const page = await axios.get(query);
-            const $ = cheerio.load(page.data);
-            const thumb = $('a').filter((i, el: any) => {
-                return $(el).attr('href').startsWith('/playlist');
-            }).get();
-            title = thumb[0].children[0].data;
-        } catch (error) {
-            title = shortid.generate();
-        }
+    try {
+        const { data } = await axios.get(query);
+        const $ = cheerio.load(data);
+        const thumb = $('a').filter((i, el: any) => {
+            return $(el).attr('href').startsWith('/playlist');
+        }).get();
+        title = thumb[0].children[0].data;
+    } catch (error) {
+        title = shortid.generate();
     }
 
     const path = `music/${title}`;

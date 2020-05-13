@@ -3,17 +3,13 @@ import yts from 'yt-search';
 import { getOne } from './lib/get-one';
 import { getPlaylist } from './lib/get-playlist';
 
-let query = ''; // youtube link or search query
+let query = 'ария 1100'; // youtube link or search query
 const playlist = false;
 
 const run = async () => {
     if (!ytdl.validateURL(query)) {
         const result = await yts(query);
-        if (playlist) {
-            query = result.playlists[0].url;
-        } else {
-            query = result.videos[0].url;
-        }
+        query = playlist ? result.playlists[0].url : result.videos[0].url;
     }
 
     if (playlist) {
